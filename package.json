@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Daanish-Khan/ARG#readme",
   "dependencies": {
-    "firebase": "^9.16.0",
     "serve": "^14.2.0"
   },
   "devDependencies": {
