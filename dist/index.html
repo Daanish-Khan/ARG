@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
+        <script>
+            function load_js() {
+                var head = document.getElementsByTagName('head')[0];
+                var script = document.createElement('script');
+                script.src ='/main.js' + new Date().getTime();
+                head.appendChild(script);
+            }
+            load_js();
+        </script>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Does this work</title>
-        <script src="/main.js?cachebuster="+ new Date().getTime()></script>
         <h1 id="oup"></h1>
         <h1>sdfsdfsdfsdf</h1>
     </head>
