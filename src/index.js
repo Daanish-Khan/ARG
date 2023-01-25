@@ -18,7 +18,7 @@ onAuthStateChanged(auth, user => {
     if (user !== null) {
         console.log('logged in!');
     } else {
-        document.getElementById('out').innerHTML = "wolololo";
+        document.getElementById('out').innerHTML = "oushdfuisdhfuyihsgdfsdujihf";
         console.log('test')
     }
 });
