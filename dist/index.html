@@ -6,7 +6,7 @@
             function load_js() {
                 var head = document.getElementsByTagName('head')[0];
                 var script = document.createElement('script');
-                script.src ='/main.js' + new Date().getTime();
+                script.src ='/main.js?cachebuster=' + new Date().getTime();
                 head.appendChild(script);
             }
             load_js();
