@@ -20,5 +20,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - run: npm i
+    - run: npm ci
     - run: node_modules/.bin/webpack
+    - run: sudo systemctl restart nginx
