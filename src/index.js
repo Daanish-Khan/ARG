@@ -18,7 +18,6 @@ onAuthStateChanged(auth, user => {
     if (user !== null) {
         console.log('logged in!');
     } else {
-        document.getElementById('oup').innerHTML = "testing github actions";
         console.log('test')
     }
 });
