@@ -1,6 +1,10 @@
+import AMOG from './images/AMOG';
 function App() {
   return (
-   <div>Test</div>
+   <div>test among us
+   <images src = {AMOG} className="AMOG" alt=""/>
+   </div>
+  
   );
 }
 
