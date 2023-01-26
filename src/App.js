@@ -1,6 +1,9 @@
+import AMOG from './/images/AMOG.png';
 function App() {
   return (
-   <div>among balls
+   <div>
+    <h1>among balls</h1>;
+    <img src={AMOG} alt="AMOG" />
    </div>
   
   );
