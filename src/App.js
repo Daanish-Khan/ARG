@@ -1,10 +1,6 @@
-
 function App() {
   return (
-   <div>test among us
-
-   </div>
-  
+   <div>Test</div>
   );
 }
 
