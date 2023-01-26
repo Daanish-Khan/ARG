@@ -10,7 +10,7 @@ function App() {
       Key:
     <input type="text" name="name" />
     </label>
-    <input type="sus" value="Submit" />
+    <input type="Submit" value="sus" />
     </form>
     </div>
   
