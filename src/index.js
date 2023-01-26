@@ -6,10 +6,6 @@ import Image from './Image';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-    <Image/>
-);
-root.render(
-    <App />
+    <App /> && <Image/>
 );
