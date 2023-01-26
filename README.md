@@ -3,8 +3,8 @@ uOttawa Esports ARG Website
 
 ## Build instructions
 
-Run `npm i` to install dependencies. Run `npm run build` to generate HTML and JS files. 
+Run `npm ci` to install dependencies. Run `npm run build` to generate build files (not needed if local build).
 
 ## To Run
 
-To create a local static server install `npm install --global serve`. Then run `serve` in the website directory. Navigate to `https://localhost:3000` for access.
+To run locally you can use `npm start`. To run on server make sure to point to `index.html` after running `npm run build`.
