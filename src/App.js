@@ -1,4 +1,4 @@
-import AMOG from './images/AMOG';
+import AMOG from '/images/AMOG';
 function App() {
   return (
    <div>among balls
