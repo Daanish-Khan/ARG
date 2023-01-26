@@ -4,13 +4,13 @@ function App() {
    <div>
     
     <img src={AMOG} alt="AMOG" />
-    <h1>among balls</h1>;
+    <h1>among balls</h1>
     <form>
     <label>
-      Name:
+      Key:
     <input type="text" name="name" />
     </label>
-    <input type="submit" value="Submit" />
+    <input type="sus" value="Sus" />
     </form>
     </div>
   
