@@ -10,8 +10,7 @@ import Box from '@mui/material/Box';
 
 import eye from './images/eye.gif'
 
-function App() {
-
+function App() { 
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
