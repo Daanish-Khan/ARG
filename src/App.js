@@ -1,14 +1,30 @@
 import * as React from 'react';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import FormControl from '@mui/material/FormControl';
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import Box from '@mui/material/Box';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box, styled } from '@mui/material';
 
 import eye from './images/eye.gif'
+
+const fieldColor = 'white';
+
+const FormInput = styled(FormControl) ({
+  '& label.Mui-focused': {
+    color: fieldColor,
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: fieldColor,
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: fieldColor,
+    },
+    '&:hover fieldset': {
+      borderColor: fieldColor,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: fieldColor,
+    },
+  },
+});
 
 function App() {
 
@@ -21,35 +37,46 @@ function App() {
   };
   
   return (
-   <div>
-    
-    <img src={eye} alt="A mysterious eye stares back at you..." className="border d-flex align-items-center justify-content-center"/>
-    <Box 
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Key</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Box
+              component="img"
+              sx={{
+                width: '15%',
+                height: '15%'
+              }}
+              alt="The house from the offer."
+              src={eye}
           />
-      </FormControl>
-    </Box>
+      </div>
+      <Box 
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <FormInput margin="normal" sx={{ m: 1, width: '25%' }} variant="outlined">
+            <InputLabel sx={{color: 'white'}} htmlFor="outlined-adornment-password">Key</InputLabel>
+            <OutlinedInput 
+              sx={{color: fieldColor}}
+              id="outlined-adornment-password"
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    sx={{color: fieldColor}}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+        </FormInput>
+      </Box>
     </div>
   
   );
