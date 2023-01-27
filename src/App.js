@@ -22,7 +22,7 @@ function App() {
 
   return (
    <div>
-    <img src={eye} alt="A mysterious eye stares back at you..." />
+    <img src={eye} alt="A mysterious eye stares back at you..." class="center"/>
     <Box 
       display="flex"
       justifyContent="center"
