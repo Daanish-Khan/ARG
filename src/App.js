@@ -22,7 +22,7 @@ function App() {
   return (
    <div>
     
-    <img src={AMOG} alt="AMOG" />
+    <img src={AMOG} alt="AMOG"/>
     <h1>among balls</h1>
     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Key</InputLabel>
