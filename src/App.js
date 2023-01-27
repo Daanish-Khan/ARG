@@ -4,7 +4,7 @@ import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box
 
 import eye from './images/eye.gif'
 
-const fieldColor = 'white';
+const fieldColor = '#880808';
 
 const FormInput = styled(FormControl) ({
   '& label.Mui-focused': {
@@ -43,6 +43,7 @@ function App() {
               component="img"
               sx={{
                 height: '20%',
+                width: '20%'
               }}
               alt="The house from the offer."
               src={eye}
@@ -54,7 +55,7 @@ function App() {
         alignItems="center"
       >
         <FormInput margin="normal" sx={{ m: 1, width: '30%' }} variant="outlined">
-            <InputLabel sx={{color: 'white'}} htmlFor="outlined-adornment-password">Key</InputLabel>
+            <InputLabel sx={{color: fieldColor}} htmlFor="outlined-adornment-password">Key</InputLabel>
             <OutlinedInput 
               sx={{color: fieldColor}}
               id="outlined-adornment-password"
