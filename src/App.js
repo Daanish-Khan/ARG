@@ -42,8 +42,7 @@ function App() {
           <Box
               component="img"
               sx={{
-                width: '15%',
-                height: '15%'
+                height: '20%',
               }}
               alt="The house from the offer."
               src={eye}
@@ -54,7 +53,7 @@ function App() {
         justifyContent="center"
         alignItems="center"
       >
-        <FormInput margin="normal" sx={{ m: 1, width: '25%' }} variant="outlined">
+        <FormInput margin="normal" sx={{ m: 1, width: '30%' }} variant="outlined">
             <InputLabel sx={{color: 'white'}} htmlFor="outlined-adornment-password">Key</InputLabel>
             <OutlinedInput 
               sx={{color: fieldColor}}
