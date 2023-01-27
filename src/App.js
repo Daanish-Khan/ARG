@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box, styled } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 import eye from './images/eye.gif'
 
 const fieldColor = '#880808';
+var isDisabled = true;
 
 const FormInput = styled(FormControl) ({
   '& label.Mui-focused': {
@@ -23,6 +25,12 @@ const FormInput = styled(FormControl) ({
     '&.Mui-focused fieldset': {
       borderColor: fieldColor,
     },
+  },
+});
+
+const SubmitButton = styled(IconButton) ({
+  '&.Mui-disabled': {
+    color: "#824343",
   },
 });
 
@@ -45,7 +53,7 @@ function App() {
                 height: '20%',
                 width: '20%'
               }}
-              alt="The house from the offer."
+              alt="A mysterious eye watches you..."
               src={eye}
           />
       </div>
@@ -55,7 +63,7 @@ function App() {
         alignItems="center"
       >
         <FormInput margin="normal" sx={{ m: 1, width: '30%' }} variant="outlined">
-            <InputLabel sx={{color: fieldColor}} htmlFor="outlined-adornment-password">Key</InputLabel>
+            <InputLabel sx={{color: fieldColor, fontSize: 18}} htmlFor="outlined-adornment-password">Key</InputLabel>
             <OutlinedInput 
               sx={{color: fieldColor}}
               id="outlined-adornment-password"
@@ -76,6 +84,9 @@ function App() {
               label="Password"
             />
         </FormInput>
+        <SubmitButton disabled={isDisabled} aria-label="send" sx={{color: fieldColor}}>
+          <SendIcon />
+        </SubmitButton>
       </Box>
     </div>
   
