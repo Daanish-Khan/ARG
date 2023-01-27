@@ -6,8 +6,9 @@ import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
+import Box from '@mui/material/Box';
 
-import AMOG from './/images/AMOG.png';
+import eye from './images/eye.gif'
 
 function App() {
 
@@ -21,10 +22,17 @@ function App() {
 
   return (
    <div>
-    
-    <img src={AMOG} alt="AMOG" />
-    <h1>among balls</h1>
-    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+    <Box
+      components="img"
+      alt="A mysterious eye stares back at you..."  
+      src={eye}
+    ></Box>
+    <Box 
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Key</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -43,7 +51,8 @@ function App() {
             }
             label="Password"
           />
-        </FormControl>
+      </FormControl>
+    </Box>
     </div>
   
   );
