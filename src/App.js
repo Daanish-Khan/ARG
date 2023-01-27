@@ -21,7 +21,7 @@ function App() {
   };
   
   return (
-   <div style={backgroundcolor="black"}>
+   <div>
     
     <img src={eye} alt="A mysterious eye stares back at you..." className="border d-flex align-items-center justify-content-center"/>
     <Box 
