@@ -20,8 +20,7 @@ function App() {
   };
 
   return (
-   <div>
-    
+   <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
     <img src={AMOG} alt="AMOG"/>
     <h1>among balls</h1>
     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
