@@ -10,7 +10,8 @@ import Box from '@mui/material/Box';
 
 import eye from './images/eye.gif'
 
-function App() { 
+function App() {
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -21,11 +22,7 @@ function App() {
 
   return (
    <div>
-    <Box
-      components="img"
-      alt="A mysterious eye stares back at you..."  
-      src={eye}
-    ></Box>
+    <img src={eye} alt="A mysterious eye stares back at you..." />
     <Box 
       display="flex"
       justifyContent="center"
