@@ -40,7 +40,6 @@ function InputField(props) {
     });
 
     const [showPassword, setShowPassword] = React.useState(false);
-    const [key, setKey] = React.useState('');
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -48,12 +47,10 @@ function InputField(props) {
         event.preventDefault();
     };
 
-    const setInput = (event) => {
-        setKey(event.target.value);
-    }
+    const keyRef = React.useRef();
 
     const onClickHandler = () => {
-        getRequest(key);
+        getRequest(keyRef.current.value);
     };
 
 
@@ -66,7 +63,7 @@ function InputField(props) {
         <FormInput margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
             <InputLabel sx={{color: props.fieldColor, fontSize: parseInt(props.inputFontSize)}} htmlFor="outlined-adornment-password">{props.inputText}</InputLabel>
             <OutlinedInput 
-              onChange={setInput}
+              inputRef={keyRef}
               sx={{color: props.fieldColor}}
               id="outlined-adornment-password"
               type={showPassword ? 'text' : 'password'}
