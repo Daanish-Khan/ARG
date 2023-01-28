@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box, styled } from '@mui/material';
+import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box, styled, FormHelperText } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import eye1 from './sounds/eye1.ogg'
 import eye2 from './sounds/eye2.ogg'
@@ -35,6 +35,8 @@ const SubmitButton = styled(IconButton) ({
 function InputField(props) {
 
     const [showPassword, setShowPassword] = React.useState(false);
+    const [correctToggle, setCorrectToggle] = React.useState(false);
+    const [hasInputted, setHasInputted] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -47,6 +49,7 @@ function InputField(props) {
     function play(num) {
         if (num === 0) {
             new Audio(eye1).play()
+
         } 
 
         if (num === 1) {
@@ -60,11 +63,16 @@ function InputField(props) {
 
     const onClickHandler = async () => {
 
+        setHasInputted(true);
+
         const resp = await fetch('https://api.uottawaesports.ca/key?k=' + keyRef.current.value).then(function(r) {
             return r.json();
         }).then(function(data) {
            if (data.valid) {
+            setCorrectToggle(true);
             play(Math.floor(Math.random() * 3));
+           } else {
+            setCorrectToggle(false);
            }
         })
         
@@ -80,7 +88,7 @@ function InputField(props) {
             justifyContent="center"
             alignItems="center"
         >
-        <FormInput margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
+        <FormInput error={hasInputted ? !correctToggle : false} margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
             <InputLabel sx={{color: props.fieldColor, fontSize: parseInt(props.inputFontSize)}} htmlFor="outlined-adornment-password">{props.inputText}</InputLabel>
             <OutlinedInput 
               inputRef={keyRef}
@@ -102,8 +110,9 @@ function InputField(props) {
               }
               label="Password"
             />
+            <FormHelperText id="component-error-text">Incorrect key</FormHelperText>
         </FormInput>
-        <SubmitButton onClick={onClickHandler} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor}}>
+        <SubmitButton onClick={onClickHandler} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor, marginTop: -2}}>
           <SendIcon />
         </SubmitButton>
       </Box>

@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Box, createTheme, ThemeProvider, CssBaseline } from "@mui/material";
+import { Box, createTheme, ThemeProvider } from "@mui/material";
 import InputField from "./components/Input";
 
 import eye from "./images/eye.gif";
 import bg from "./components/sounds/bg.mp3";
-import Minecraft from './components/fonts/font.woff2'
 
 const fieldColor = "#880808";
 var isDisabled = false;
@@ -59,7 +58,7 @@ function App() {
           disabledColor={disabledColor}
           isDisabled={isDisabled}
           inputWidth="30%"
-          inputFontSize="18"
+          inputFontSize="20"
           inputText="Key"
         ></InputField>
       </div>
