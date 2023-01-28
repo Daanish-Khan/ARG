@@ -90,7 +90,7 @@ function InputField(props) {
         >
         <FormInput error={hasInputted ? !correctToggle : false} margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
             <InputLabel sx={{color: props.fieldColor, fontSize: parseInt(props.inputFontSize)}} htmlFor="outlined-adornment-password">{props.inputText}</InputLabel>
-            <OutlinedInput 
+            <OutlinedInput  
               inputRef={keyRef}
               sx={{color: props.fieldColor}}
               id="outlined-adornment-password"
