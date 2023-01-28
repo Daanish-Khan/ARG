@@ -109,7 +109,7 @@ function InputField(props) {
               }
               label="Password"
             />
-            <FormHelperText id="component-error-text">Incorrect key</FormHelperText>
+            <FormHelperText id="component-error-text">{hasInputted ? (!correctToggle ? "Incorrect key" : "") : ""}</FormHelperText>
         </FormInput>
         <SubmitButton onClick={onClickHandler} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor, marginTop: -2}}>
           <SendIcon />
