@@ -13,10 +13,6 @@ const getRequest = async (key) => {
 
 function InputField(props) {
 
-    const onClickHandler = (k) => {
-        getRequest(key);
-    };
-
     const FormInput = styled(FormControl) ({
         '& label.Mui-focused': {
             color: props.fieldColor,
@@ -52,6 +48,15 @@ function InputField(props) {
         event.preventDefault();
     };
 
+    const setInput = (event) => {
+        setKey(event.target.value);
+    }
+
+    const onClickHandler = (k) => {
+        getRequest(key);
+    };
+
+
     return (
         <Box 
             display="flex"
@@ -61,7 +66,7 @@ function InputField(props) {
         <FormInput margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
             <InputLabel sx={{color: props.fieldColor, fontSize: parseInt(props.inputFontSize)}} htmlFor="outlined-adornment-password">{props.inputText}</InputLabel>
             <OutlinedInput 
-              onChange={(event) => setKey(event.target.value)}
+              onChange={setInput}
               sx={{color: props.fieldColor}}
               id="outlined-adornment-password"
               type={showPassword ? 'text' : 'password'}

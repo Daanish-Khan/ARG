@@ -29,7 +29,7 @@ function App() {
         <Box
           component="img"
           sx={{
-            width: "20%",
+            width: "15%",
           }}
           alt="A mysterious eye watches you..."
           src={eye}
