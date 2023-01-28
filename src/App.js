@@ -17,9 +17,25 @@ const theme = createTheme({
   }
 });
 
+const EventContext = React.createContext();
+
 function App() {
 
+  const [event, setEvent] = React.useState(0);
   const [mute, setMute] = React.useState(false);
+
+  React.useEffect(() => {
+    async function f() {
+        await fetch('https://api.uottawaesports.ca/event').then(function(r) {
+        return r.json();
+      }).then(function(data) {
+        setEvent(data.event);
+      })
+    }
+    
+    f();
+
+  }, []);
 
   const handleClick = () => setMute((mute) => !mute);
 
@@ -32,53 +48,55 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <IconButton onClick={handleClick} sx={{ color: fieldColor, position: "absolute", bottom: 10, right: 10}}>
-          {!mute ? <VolumeUpIcon fontSize="large" /> : <VolumeOffIcon fontSize="large" />}
-        </IconButton>
-      </div>
-      
-      <div
-        onMouseOver={playAudio}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100vh",
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
+    <EventContext.Provider value={event}>
+      <ThemeProvider theme={theme}>
+        <div>
+          <IconButton onClick={handleClick} sx={{ color: fieldColor, position: "absolute", bottom: 10, right: 10}}>
+            {!mute ? <VolumeUpIcon fontSize="large" /> : <VolumeOffIcon fontSize="large" />}
+          </IconButton>
+        </div>
         
-        <audio id="bg" loop muted={mute}>
-          <source src={bg} type="audio/mp3"></source>
-        </audio>
         <div
+          onMouseOver={playAudio}
           style={{
             display: "flex",
-            alignItems: "center",
+            flexDirection: "column",
+            height: "100vh",
+            alignContent: "center",
             justifyContent: "center",
           }}
         >
-          <Box
-            component="img"
-            sx={{
-              width: "15%",
+          
+          <audio id="bg" loop muted={mute}>
+            <source src={bg} type="audio/mp3"></source>
+          </audio>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-            alt="A mysterious eye watches you..."
-            src={eye}
-          />
+          >
+            <Box
+              component="img"
+              sx={{
+                width: "15%",
+              }}
+              alt="A mysterious eye watches you..."
+              src={eye}
+            />
+          </div>
+          <InputField
+            fieldColor={fieldColor}
+            disabledColor={disabledColor}
+            isDisabled={isDisabled}
+            inputWidth="30%"
+            inputFontSize="20"
+            inputText="Key"
+          ></InputField>
         </div>
-        <InputField
-          fieldColor={fieldColor}
-          disabledColor={disabledColor}
-          isDisabled={isDisabled}
-          inputWidth="30%"
-          inputFontSize="20"
-          inputText="Key"
-        ></InputField>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </EventContext.Provider>
   );
 }
 
