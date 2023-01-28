@@ -51,6 +51,7 @@ function InputField(props) {
 
     const onClickHandler = () => {
         getRequest(keyRef.current.value);
+        keyRef.current.value = '';
     };
 
 
