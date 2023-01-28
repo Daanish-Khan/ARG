@@ -4,8 +4,11 @@ import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box
 import SendIcon from '@mui/icons-material/Send';
 
 const getRequest = async (key) => {
-    const resp = await fetch('https://api.uottawaesports.ca/key?k=' + key)
-    console.log(resp)
+    const resp = await fetch('https://api.uottawaesports.ca/key?k=' + key).then(function(r) {
+        return r.json();
+    }).then(function(data) {
+        console.log(data)
+    })
 };
 
 function InputField(props) {
@@ -58,7 +61,7 @@ function InputField(props) {
         <FormInput margin="normal" sx={{ m: 1, width: props.inputWidth }} variant="outlined">
             <InputLabel sx={{color: props.fieldColor, fontSize: parseInt(props.inputFontSize)}} htmlFor="outlined-adornment-password">{props.inputText}</InputLabel>
             <OutlinedInput 
-              onInput={(event) => setKey(event.target.value)}
+              onChange={(event) => setKey(event.target.value)}
               sx={{color: props.fieldColor}}
               id="outlined-adornment-password"
               type={showPassword ? 'text' : 'password'}
@@ -78,7 +81,7 @@ function InputField(props) {
               label="Password"
             />
         </FormInput>
-        <SubmitButton onClick={onClickHandler(key)} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor}}>
+        <SubmitButton onClick={() => onClickHandler(key)} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor}}>
           <SendIcon />
         </SubmitButton>
       </Box>
