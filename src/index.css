@@ -1,5 +1,15 @@
+
+@font-face {
+    font-family: Minecraft;   /*Can be any text*/
+    src: local("Minecraft"),
+      url("./components/fonts/font.woff2") format("woff2");
+  }
+
 body {
     background-color: #0D0511;
     margin:0;
     padding:0;
+    font-family: Minecraft;
 }
+
+

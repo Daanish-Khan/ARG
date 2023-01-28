@@ -4,7 +4,7 @@ import InputField from "./components/Input";
 
 import eye from "./images/eye.gif";
 import bg from "./components/sounds/bg.mp3";
-import Minecraft from './components/fonts/font.otf'
+import Minecraft from './components/fonts/font.woff2'
 
 const fieldColor = "#880808";
 var isDisabled = false;
@@ -19,7 +19,7 @@ function playAudio() {
 const theme = createTheme({
   typography: {
     fontFamily: 'Minecraft',
-  },
+  }
 });
 
 function App() {
