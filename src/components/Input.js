@@ -65,7 +65,7 @@ function InputField(props) {
 
         setHasInputted(true);
 
-        const resp = await fetch('https://api.uottawaesports.ca/key?k=' + keyRef.current.value).then(function(r) {
+        await fetch('https://api.uottawaesports.ca/key?k=' + keyRef.current.value).then(function(r) {
             return r.json();
         }).then(function(data) {
            if (data.valid) {
@@ -75,7 +75,6 @@ function InputField(props) {
             setCorrectToggle(false);
            }
         })
-        
         
         keyRef.current.value = '';
 
