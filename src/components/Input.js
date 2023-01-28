@@ -52,7 +52,7 @@ function InputField(props) {
         setKey(event.target.value);
     }
 
-    const onClickHandler = (k) => {
+    const onClickHandler = () => {
         getRequest(key);
     };
 
@@ -86,7 +86,7 @@ function InputField(props) {
               label="Password"
             />
         </FormInput>
-        <SubmitButton onClick={() => onClickHandler(key)} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor}}>
+        <SubmitButton onClick={onClickHandler} disabled={props.isDisabled} aria-label="send" sx={{color: props.fieldColor}}>
           <SendIcon />
         </SubmitButton>
       </Box>
