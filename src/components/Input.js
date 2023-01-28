@@ -2,42 +2,37 @@ import * as React from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { FormControl, IconButton, OutlinedInput, InputLabel, InputAdornment, Box, styled } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import eye1 from './sounds/eye1.ogg'
+import eye2 from './sounds/eye2.ogg'
+import eye3 from './sounds/eye3.ogg'
 
-const getRequest = async (key) => {
-    const resp = await fetch('https://api.uottawaesports.ca/key?k=' + key).then(function(r) {
-        return r.json();
-    }).then(function(data) {
-        console.log(data)
-    })
-};
+const fieldColor = "#880808";
+const disabledColor = "#824343";
+
+const FormInput = styled(FormControl) ({
+    '& label.Mui-focused': {
+        color: fieldColor,
+    },
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: fieldColor,
+        },
+        '&:hover fieldset': {
+            borderColor: fieldColor,
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: fieldColor,
+        },
+    },
+});
+
+const SubmitButton = styled(IconButton) ({
+    '&.Mui-disabled': {
+        color: disabledColor,
+    },
+});
 
 function InputField(props) {
-
-    const FormInput = styled(FormControl) ({
-        '& label.Mui-focused': {
-            color: props.fieldColor,
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: props.fieldColor,
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: props.fieldColor,
-            },
-            '&:hover fieldset': {
-                borderColor: props.fieldColor,
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: props.fieldColor,
-            },
-        },
-    });
-
-    const SubmitButton = styled(IconButton) ({
-        '&.Mui-disabled': {
-            color: props.disabledColor,
-        },
-    });
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -49,9 +44,33 @@ function InputField(props) {
 
     const keyRef = React.useRef();
 
-    const onClickHandler = () => {
-        getRequest(keyRef.current.value);
+    function play(num) {
+        if (num === 0) {
+            new Audio(eye1).play()
+        } 
+
+        if (num === 1) {
+            new Audio(eye2).play()
+        }
+
+        if (num === 3) {
+            new Audio(eye3).play()
+        }
+    }
+
+    const onClickHandler = async () => {
+
+        const resp = await fetch('https://api.uottawaesports.ca/key?k=' + keyRef.current.value).then(function(r) {
+            return r.json();
+        }).then(function(data) {
+           if (data.valid) {
+            play(Math.floor(Math.random() * 3));
+           }
+        })
+        
+        
         keyRef.current.value = '';
+
     };
 
 
