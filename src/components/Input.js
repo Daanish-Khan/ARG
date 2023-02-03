@@ -5,6 +5,7 @@ import SendIcon from '@mui/icons-material/Send';
 import eye1 from './sounds/eye1.ogg'
 import eye2 from './sounds/eye2.ogg'
 import eye3 from './sounds/eye3.ogg'
+import activation from './sounds/activation.ogg'
 
 const fieldColor = "#880808";
 const disabledColor = "#824343";
@@ -47,6 +48,7 @@ function InputField(props) {
     const keyRef = React.useRef();
 
     function play(num) {
+
         if (num === 0) {
             new Audio(eye1).play()
 
@@ -59,6 +61,12 @@ function InputField(props) {
         if (num === 3) {
             new Audio(eye3).play()
         }
+
+        if (num === -1) {
+            var end = new Audio(activation)
+            end.volume = 0.4;
+            end.play();
+        }
     }
 
     const onClickHandler = async () => {
@@ -68,7 +76,13 @@ function InputField(props) {
         }).then(function(data) {
            if (data.valid) {
             setCorrectToggle(true);
-            play(Math.floor(Math.random() * 3));
+            console.log(data);
+            if (data.trigger === 12) {
+                play(-1);
+            } else {
+                play(Math.floor(Math.random() * 3));
+            }
+
            } else {
             setCorrectToggle(false);
            }

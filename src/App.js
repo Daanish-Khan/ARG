@@ -21,7 +21,7 @@ const EventContext = React.createContext();
 
 function App() {
 
-  const [event, setEvent] = React.useState(0);
+  const [argEvent, setArgEvent] = React.useState(1);
   const [mute, setMute] = React.useState(false);
 
   React.useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
         await fetch('https://api.uottawaesports.ca/event').then(function(r) {
         return r.json();
       }).then(function(data) {
-        setEvent(data.event);
+        setArgEvent(data.argEvent);
       })
     }
     
@@ -48,7 +48,7 @@ function App() {
   }
 
   return (
-    <EventContext.Provider value={event}>
+    <EventContext.Provider value={argEvent}>
       <ThemeProvider theme={theme}>
         <div>
           <IconButton onClick={handleClick} sx={{ color: fieldColor, position: "absolute", bottom: 10, right: 10}}>
