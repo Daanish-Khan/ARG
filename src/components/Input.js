@@ -63,8 +63,6 @@ function InputField(props) {
 
     const onClickHandler = async () => {
 
-        setHasInputted(true);
-
         await fetch('https://api.uottawaesports.ca/key?k=' + keyRef.current.value).then(function(r) {
             return r.json();
         }).then(function(data) {
@@ -74,6 +72,8 @@ function InputField(props) {
            } else {
             setCorrectToggle(false);
            }
+
+           setHasInputted(true);
         })
         
         keyRef.current.value = '';
