@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Box, createTheme, IconButton, ThemeProvider } from "@mui/material";
 import InputField from "./components/Input";
+import DownloadButton from "./components/DownloadButton";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
@@ -93,7 +94,14 @@ function App() {
             inputWidth="30%"
             inputFontSize="20"
             inputText="Key"
-          ></InputField>
+            />
+          <DownloadButton
+            minWidth="15%"
+            maxWidth="15%"
+            fieldColor="#8313C4"
+            hoverColor="#9616E0"
+            />
+          
         </div>
       </ThemeProvider>
     </EventContext.Provider>
