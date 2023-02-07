@@ -42,9 +42,15 @@ function App() {
   React.useEffect(() => {
     setInterval(() => {
       setShowDownload(true);
-      console.log("event")
     }, 120000);
-  }, []);
+
+    setTimeout(() => {
+      setInterval(() => {
+        setShowDownload(false);
+      }, 120000);
+    }, 10000);
+    
+  }, []); 
 
   const handleClick = () => setMute((mute) => !mute);
 
