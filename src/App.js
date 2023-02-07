@@ -24,18 +24,26 @@ function App() {
 
   const [argEvent, setArgEvent] = React.useState(1);
   const [mute, setMute] = React.useState(false);
+  const [showDownload, setShowDownload] = React.useState(false);
 
   React.useEffect(() => {
     async function f() {
         await fetch('https://api.uottawaesports.ca/event').then(function(r) {
         return r.json();
       }).then(function(data) {
-        setArgEvent(data.argEvent);
+        setArgEvent(data.event);
       })
     }
     
     f();
 
+  }, []);
+
+  React.useEffect(() => {
+    setInterval(() => {
+      setShowDownload(true);
+      console.log("event")
+    }, 120000);
   }, []);
 
   const handleClick = () => setMute((mute) => !mute);
@@ -95,12 +103,12 @@ function App() {
             inputFontSize="20"
             inputText="Key"
             />
-          <DownloadButton
+          {(showDownload && argEvent === 2) && <DownloadButton
             minWidth="15%"
             maxWidth="15%"
             fieldColor="#8313C4"
             hoverColor="#9616E0"
-            />
+            />}
           
         </div>
       </ThemeProvider>

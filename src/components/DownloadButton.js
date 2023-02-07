@@ -40,7 +40,8 @@ function DownloadButton(props) {
             style={{
                 minWidth: props.minWidth, 
                 maxWidth: props.maxWidth
-            }} 
+            }}
+            href="https://api.uottawaesports.ca/file"
             variant="outlined">
               DOWNLOAD
           </DlButton>
