@@ -97,7 +97,7 @@ function App() {
               sx={{
                 width: "15%",
               }}
-              alt="A mysterious eye watches you..."
+              alt={argEvent === 4 ? "minus ditdahditditdahditditditdah ditdahdahdahdahditdah minus ditditdahditdahditdit break minus ditdahditditdahditditdahdahdah ditdahdahdahdahdahdit ditditditdahdahdahditditdahdit break minus ditditditdahdahditditdit ditdahdahdahdahditditdit minus ditditdahdahditditdahdahditdit" : "A mysterious eye watches you..."}
               src={eye}
             />
           </div>
@@ -115,8 +115,8 @@ function App() {
             fieldColor="#8313C4"
             hoverColor="#9616E0"
             />}
-          
         </div>
+        
       </ThemeProvider>
     </EventContext.Provider>
   );
