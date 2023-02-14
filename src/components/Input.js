@@ -94,7 +94,6 @@ function InputField(props) {
 
     };
 
-
     return (
         <Box 
             display="flex"

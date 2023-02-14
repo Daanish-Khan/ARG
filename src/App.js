@@ -2,6 +2,7 @@ import * as React from "react";
 import { Box, createTheme, IconButton, ThemeProvider } from "@mui/material";
 import InputField from "./components/Input";
 import DownloadButton from "./components/DownloadButton";
+import ARGButton from "./components/ARGButton";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
@@ -9,7 +10,6 @@ import eye from "./images/eye.gif";
 import bg from "./components/sounds/bg.mp3";
 
 const fieldColor = "#880808";
-var isDisabled = false;
 const disabledColor = "#824343";
 
 const theme = createTheme({
@@ -25,6 +25,8 @@ function App() {
   const [argEvent, setArgEvent] = React.useState(1);
   const [mute, setMute] = React.useState(false);
   const [showDownload, setShowDownload] = React.useState(false);
+  const [isDisabled, setIsDisabled] = React.useState(true);
+  const [isClicked, setIsClicked] = React.useState(false);
 
   React.useEffect(() => {
     async function f() {
@@ -50,7 +52,15 @@ function App() {
       }, 120000);
     }, 10000);
     
-  }, []); 
+  }, []);
+  
+  React.useEffect(() => {
+    if (argEvent === 9) {
+      setIsDisabled(false)
+    } else {
+      setIsDisabled(true);
+    }
+  }, [argEvent]);
 
   const handleClick = () => setMute((mute) => !mute);
 
@@ -98,13 +108,12 @@ function App() {
                 width: "15%",
               }}
               alt={argEvent === 4 ? "minus ditdahditditdahditditditdah ditdahdahdahdahditdah minus ditditdahditdahditdit break minus ditdahditditdahditditdahdahdah ditdahdahdahdahdahdit ditditditdahdahdahditditdahdit break minus ditditditdahdahditditdit ditdahdahdahdahditditdit minus ditditdahdahditditdahdahditdit" : "A mysterious eye watches you..."}
-              src={eye}
+              src={isClicked ? "https://api.uottawaesports.ca/9": eye }
             />
           </div>
           <InputField
             fieldColor={fieldColor}
             disabledColor={disabledColor}
-            isDisabled={isDisabled}
             inputWidth="30%"
             inputFontSize="20"
             inputText="Key"
@@ -115,6 +124,15 @@ function App() {
             fieldColor="#8313C4"
             hoverColor="#9616E0"
             />}
+          {(argEvent >= 6 && argEvent < 10) && <ARGButton 
+            minWidth="15%"
+            maxWidth="15%"
+            fieldColor="#8313C4"
+            hoverColor="#9616E0"
+            isDisabled={isDisabled}
+            isEvent={argEvent === 9}
+            onClick={() => setIsClicked(true)}
+          />}
         </div>
         
       </ThemeProvider>
