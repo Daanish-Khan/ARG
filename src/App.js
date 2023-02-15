@@ -44,12 +44,12 @@ function App() {
   React.useEffect(() => {
     setInterval(() => {
       setShowDownload(true);
-    }, 120000);
+    }, 60000);
 
     setTimeout(() => {
       setInterval(() => {
         setShowDownload(false);
-      }, 120000);
+      }, 60000);
     }, 10000);
     
   }, []);
