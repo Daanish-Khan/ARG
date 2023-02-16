@@ -3,8 +3,11 @@ import { Box, createTheme, IconButton, ThemeProvider } from "@mui/material";
 import InputField from "./components/Input";
 import DownloadButton from "./components/DownloadButton";
 import ARGButton from "./components/ARGButton";
+import SolvedDialog from "./components/SolvedDialog";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { JigsawPuzzle } from "react-jigsaw-puzzle";
+import 'react-jigsaw-puzzle/lib/jigsaw-puzzle.css';
 
 import eye from "./images/eye.gif";
 import bg from "./components/sounds/bg.mp3";
@@ -27,6 +30,8 @@ function App() {
   const [showDownload, setShowDownload] = React.useState(false);
   const [isDisabled, setIsDisabled] = React.useState(true);
   const [isClicked, setIsClicked] = React.useState(false);
+  const [isSolved, setIsSolved] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   React.useEffect(() => {
     async function f() {
@@ -63,6 +68,7 @@ function App() {
   }, [argEvent]);
 
   const handleClick = () => setMute((mute) => !mute);
+  const dialogClose = () => setDialogOpen(false);
 
   function playAudio() {
     if (!mute) {
@@ -70,6 +76,11 @@ function App() {
     }
     document.getElementById("bg").volume = 0.10;
     document.getElementById("bg").play();
+  }
+
+  const handleSolved = () => {
+    setIsSolved(true);
+    setDialogOpen(true);
   }
 
   return (
@@ -95,6 +106,22 @@ function App() {
           <audio id="bg" loop muted={mute}>
             <source src={bg} type="audio/mp3"></source>
           </audio>
+          { (argEvent === 12 && !isSolved) ? 
+          <div
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            width: "15vw",
+            paddingLeft: "43vw"
+            }}>
+            <JigsawPuzzle
+              imageSrc='https://www.dl.dropboxusercontent.com/s/3a5vc8s5rv7o15g/Logo%20Red.png?dl=0'
+              rows={3}
+              columns={3}
+              onSolved={handleSolved}
+            />
+          </div>
+             : 
           <div
             style={{
               display: "flex",
@@ -107,10 +134,10 @@ function App() {
               sx={{
                 width: "15%",
               }}
-              alt={argEvent === 4 ? "minus ditdahditditdahditditditdah ditdahdahdahdahditdah minus ditditdahditdahditdit break minus ditdahditditdahditditdahdahdah ditdahdahdahdahdahdit ditditditdahdahdahditditdahdit break minus ditditditdahdahditditdit ditdahdahdahdahditditdit minus ditditdahdahditditdahdahditdit" : "A mysterious eye watches you..."}
+              alt={isSolved ? "Tu 10-11 Th 2-3" : (argEvent === 4 ? "minus ditdahditditdahditditditdah ditdahdahdahdahditdah minus ditditdahditdahditdit break minus ditdahditditdahditditdahdahdah ditdahdahdahdahdahdit ditditditdahdahdahditditdahdit break minus ditditditdahdahditditdit ditdahdahdahdahditditdit minus ditditdahdahditditdahdahditdit" : "A mysterious eye watches you...")}
               src={isClicked ? "https://api.uottawaesports.ca/9": eye }
             />
-          </div>
+          </div>}
           <InputField
             fieldColor={fieldColor}
             disabledColor={disabledColor}
@@ -118,13 +145,15 @@ function App() {
             inputFontSize="20"
             inputText="Key"
             />
-          {(showDownload && argEvent === 2) && <DownloadButton
+          {(showDownload && argEvent === 2) && 
+          <DownloadButton
             minWidth="15%"
             maxWidth="15%"
             fieldColor="#8313C4"
             hoverColor="#9616E0"
             />}
-          {(argEvent >= 6 && argEvent < 10) && <ARGButton 
+          {(argEvent >= 6 && argEvent < 10) && 
+          <ARGButton 
             minWidth="15%"
             maxWidth="15%"
             fieldColor="#8313C4"
@@ -133,6 +162,10 @@ function App() {
             isEvent={argEvent === 9}
             onClick={() => setIsClicked(true)}
           />}
+          <SolvedDialog 
+            open={dialogOpen}
+            handleClose={dialogClose}
+          />
         </div>
         
       </ThemeProvider>
