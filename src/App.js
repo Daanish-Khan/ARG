@@ -134,7 +134,7 @@ function App() {
               sx={{
                 width: "15%",
               }}
-              alt={isSolved ? "Tu 10-11 Th 2-3" : (argEvent === 4 ? "minus ditditditdahdah dahditditditdit dahditditditdit / dahditditditdit dahditditditdit / minus ditdahdahdahdah dahdahdahdahdah dahdahditditdit break minus dahdahditditdit ditditdahdahdah dahdahdahditdit / dahditditditdit ditditditditdit / dahdahdahdahdit dahdahdahdahdah dahdahdahdahdit break minus ditditdahdahdah ditditditdahdah ditdahdahdahdah / ditdahdahdahdah ditditditdahdah ditditditditdit / minus dahdahdahditdit ditdahdahdahdah dahdahdahdahdit" : "A mysterious eye watches you...")}
+              alt={isSolved ? "Tu 10-11 Th 2-3" : (argEvent === 4 ? "minus ditditditdahdah dahditditditdit dahditditditdit / dahditditditdit dahditditditdit / minus ditdahdahdahdah dahdahdahdahdah dahdahditditdit break minus dahdahditditdit ditditdahdahdah dahdahdahditdit / dahditditditdit ditditditditdit / dahdahdahdahdit dahdahdahdahdah dahdahdahdahdit break minus ditditdahdahdah ditditditdahdah ditdahdahdahdah / ditdahdahdahdah ditditditdahdah ditditditditdit / minus dahdahdahditdit ditdahdahdahdah dahdahdahdahdit" : (argEvent === 5 ? "WKH HBH FDQ EH HQFKDQWHG" : "A mysterious eye watches you...")}
               src={isClicked ? "https://api.uottawaesports.ca/9": eye }
             />
           </div>}
